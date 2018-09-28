@@ -5,12 +5,12 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   def index
     @feedbacks = apply_scopes(Feedback)
-    
+
     render json: @feedbacks
   end
 
   def show_feedback
-    feedback = Feedback.find_by(number: params[:number], company_token: params[:company_token])
+    feedback = Feedback.find_by!(number: params[:number], company_token: params[:company_token])
     render json: feedback
   end
 
